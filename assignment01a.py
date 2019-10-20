@@ -39,18 +39,5 @@ for i in range(n):
     print(stAlt[n-i])
     for j in range(i):
         print(st[n-i + j])    
-    print('\n')
+    print()
 
-
-
-poem = '''
-
-"""
-
-def poem():
-    return ''
-
-
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
