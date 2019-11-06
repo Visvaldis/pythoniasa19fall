@@ -7,6 +7,7 @@ def task1(text):
     [89, 9, -789, 0, 1]
     """
     # todo: write your code here
+    return [int(i) for i in str.split(text, ',')]
 
 
 def task2(text):
@@ -17,6 +18,7 @@ def task2(text):
     'apple pen pen pineapple'
     """
     # todo: write your code here
+    return ' '.join(sorted(str.split(text, ' ')))
 
 
 def task3(text):
@@ -30,17 +32,18 @@ def task3(text):
     {'digits': 0, 'letters': 26}
     """
     # todo: write your code here
+    return {'digits': len(set(i for i in text if i.isdigit())), 'letters': len(set(i for i in text if i.isalpha()))}
 
 
 def task4(digit):
     """
     For any digit X from 0 to 9, calculate expression 'X + XX + XXX + XXXX'.
 
-    >>> [task4(d) for d in '0123456789']
+    >> [task4(d) for d in '0123456789']
     [0, 1234, 2468, 3702, 4936, 6170, 7404, 8638, 9872, 11106]
     """
     # todo: write your code here
-
+    return sum([int(i * digit) for i in range(1, 5)])
 
 def task5(text, letter1, letter2):
     """
@@ -60,7 +63,7 @@ def task5(text, letter1, letter2):
     False
     """
     # todo: write your code here
-
+    return -1 < text.rfind(letter1) < text.find(letter2)
 
 def task6(text, censored):
     """
@@ -74,7 +77,9 @@ def task6(text, censored):
     'UPPERCASE'
     """
     # todo: write your code here
-
+    for i in censored:
+        text = text.replace('*', i, 1)
+    return text
 
 def task7(text, words):
     """
@@ -91,8 +96,16 @@ def task7(text, words):
     False
     """
     # todo: write your code here
-
+    text = text.lower()
+    for word in words:
+        for char in word:
+            if text != text.replace(char, "", 1):
+                text = text.replace(char, "", 1)
+            else:
+                return False
+    return True
 
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
+    print(task2('pen pineapple apple pen'))
